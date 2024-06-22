@@ -1,0 +1,223 @@
+{\rtf1\ansi\ansicpg1251\cocoartf2709
+\cocoatextscaling0\cocoaplatform0{\fonttbl\f0\fswiss\fcharset0 Helvetica;\f1\fnil\fcharset0 Menlo-Bold;\f2\fnil\fcharset0 Menlo-Regular;
+}
+{\colortbl;\red255\green255\blue255;\red0\green0\blue109;\red0\green0\blue0;\red222\green53\blue46;
+\red14\green109\blue108;}
+{\*\expandedcolortbl;;\cssrgb\c0\c0\c50196;\cssrgb\c0\c0\c0;\cssrgb\c90588\c29804\c23529;
+\cssrgb\c0\c49804\c49804;}
+\paperw11900\paperh16840\margl1440\margr1440\vieww11520\viewh8400\viewkind0
+\pard\tx566\tx1133\tx1700\tx2267\tx2834\tx3401\tx3968\tx4535\tx5102\tx5669\tx6236\tx6803\pardirnatural\partightenfactor0
+
+\f0\fs24 \cf0 \uc0\u1047 \u1072 \u1076 \u1072 \u1095 \u1072  1\
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://dev.mysql.com/doc/refman/8.0/en/select.html"}}{\fldrslt 
+\f1\b\fs23\fsmilli11700 \cf2 \expnd0\expndtw0\kerning0
+SELECT}}
+\f2\fs23\fsmilli11700 \expnd0\expndtw0\kerning0
+ orderNumber,productCode,{\field{\*\fldinst{HYPERLINK "https://dev.mysql.com/doc/refman/8.0/en/group-by-functions.html#function_max"}}{\fldrslt 
+\f1\b \cf2 MAX}}(quantityOrdered*priceEach) 
+\f1\b \cf2 AS
+\f2\b0 \cf0  maxi\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=orderdetails"}}{\fldrslt \cf4 \ul \ulc4 orderdetails}}\
+
+\f1\b \cf2 GROUP
+\f2\b0 \cf0  
+\f1\b \cf2 BY
+\f2\b0 \cf0  orderNumber,productCode\
+
+\f1\b \cf2 LIMIT
+\f2\b0 \cf0  \cf5 10\cf0 \
+\uc0\u1047 \u1072 \u1076 \u1072 \u1095 \u1072  2\
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://dev.mysql.com/doc/refman/8.0/en/select.html"}}{\fldrslt 
+\f1\b \cf2 SELECT}} {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=orderdetails"}}{\fldrslt orderdetails}}.orderNumber 
+\f1\b \cf2 AS
+\f2\b0 \cf0  number,{\field{\*\fldinst{HYPERLINK "https://dev.mysql.com/doc/refman/8.0/en/group-by-functions.html#function_sum"}}{\fldrslt 
+\f1\b \cf2 SUM}}(quantityOrdered*priceEach) 
+\f1\b \cf2 AS
+\f2\b0 \cf0  total\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=orderdetails"}}{\fldrslt orderdetails}}\
+
+\f1\b \cf2 INNER
+\f2\b0 \cf0  {\field{\*\fldinst{HYPERLINK "https://dev.mysql.com/doc/refman/8.0/en/join.html"}}{\fldrslt 
+\f1\b \cf2 JOIN}} {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=orders"}}{\fldrslt orders}}\
+
+\f1\b \cf2 ON
+\f2\b0 \cf0  {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=orderdetails"}}{\fldrslt orderdetails}}.orderNumber = {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=orders"}}{\fldrslt orders}}.orderNumber\
+
+\f1\b \cf2 GROUP
+\f2\b0 \cf0  
+\f1\b \cf2 BY
+\f2\b0 \cf0  number\
+
+\f1\b \cf2 HAVING
+\f2\b0 \cf0  total > \cf5 59000\cf0 \
+\uc0\u1047 \u1072 \u1076 \u1072 \u1095 \u1072  3\
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://dev.mysql.com/doc/refman/8.0/en/select.html"}}{\fldrslt 
+\f1\b \cf2 SELECT}} {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=orderdetails"}}{\fldrslt orderdetails}}.orderNumber 
+\f1\b \cf2 AS
+\f2\b0 \cf0  number,orderDate,status,{\field{\*\fldinst{HYPERLINK "https://dev.mysql.com/doc/refman/8.0/en/group-by-functions.html#function_sum"}}{\fldrslt 
+\f1\b \cf2 SUM}}(quantityOrdered*priceEach) 
+\f1\b \cf2 AS
+\f2\b0 \cf0  total\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=orderdetails"}}{\fldrslt orderdetails}}\
+
+\f1\b \cf2 INNER
+\f2\b0 \cf0  {\field{\*\fldinst{HYPERLINK "https://dev.mysql.com/doc/refman/8.0/en/join.html"}}{\fldrslt 
+\f1\b \cf2 JOIN}} {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=orders"}}{\fldrslt orders}}\
+
+\f1\b \cf2 ON
+\f2\b0 \cf0  {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=orderdetails"}}{\fldrslt orderdetails}}.orderNumber = {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=orders"}}{\fldrslt orders}}.orderNumber\
+
+\f1\b \cf2 GROUP
+\f2\b0 \cf0  
+\f1\b \cf2 BY
+\f2\b0 \cf0  number\
+
+\f1\b \cf2 HAVING
+\f2\b0 \cf0  total > \cf5 59000\
+\
+\uc0\u1047 \u1072 \u1076 \u1072 \u1095 \u1072  4\
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://dev.mysql.com/doc/refman/8.0/en/select.html"}}{\fldrslt 
+\f1\b \cf2 SELECT}}\cf0  contactFirstName, contactLastName, country, {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=orderdetails"}}{\fldrslt orderdetails}}.orderNumber, orderDate, status, {\field{\*\fldinst{HYPERLINK "https://dev.mysql.com/doc/refman/8.0/en/group-by-functions.html#function_sum"}}{\fldrslt 
+\f1\b \cf2 SUM}}(quantityOrdered * priceEach) 
+\f1\b \cf2 as
+\f2\b0 \cf0  total\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=orderdetails"}}{\fldrslt orderdetails}}\
+
+\f1\b \cf2 INNER
+\f2\b0 \cf0  {\field{\*\fldinst{HYPERLINK "https://dev.mysql.com/doc/refman/8.0/en/join.html"}}{\fldrslt 
+\f1\b \cf2 JOIN}} {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=orders"}}{\fldrslt orders}}\
+
+\f1\b \cf2 ON
+\f2\b0 \cf0  {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=orderdetails"}}{\fldrslt orderdetails}}.orderNumber = {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=orders"}}{\fldrslt orders}}.orderNumber\
+
+\f1\b \cf2 INNER
+\f2\b0 \cf0  {\field{\*\fldinst{HYPERLINK "https://dev.mysql.com/doc/refman/8.0/en/join.html"}}{\fldrslt 
+\f1\b \cf2 JOIN}} {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=customers"}}{\fldrslt customers}} \
+
+\f1\b \cf2 ON
+\f2\b0 \cf0  {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=orders"}}{\fldrslt orders}}.customerNumber = {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=customers"}}{\fldrslt customers}}.customerNumber\
+
+\f1\b \cf2 GROUP
+\f2\b0 \cf0  
+\f1\b \cf2 BY
+\f2\b0 \cf0  {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=orderdetails"}}{\fldrslt orderdetails}}.orderNumber\
+
+\f1\b \cf2 HAVING
+\f2\b0 \cf0  total > \cf5 59000\cf0 \
+\uc0\u1047 \u1072 \u1076 \u1072 \u1095 \u1072  5\
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://dev.mysql.com/doc/refman/8.0/en/select.html"}}{\fldrslt 
+\f1\b \cf2 SELECT}} {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=products"}}{\fldrslt products}}.productName 
+\f1\b \cf2 AS
+\f2\b0 \cf0  prod,{\field{\*\fldinst{HYPERLINK "https://dev.mysql.com/doc/refman/8.0/en/group-by-functions.html#function_sum"}}{\fldrslt 
+\f1\b \cf2 SUM}}(quantityOrdered*priceEach) 
+\f1\b \cf2 AS
+\f2\b0 \cf0  total\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=products"}}{\fldrslt products}}\
+
+\f1\b \cf2 INNER
+\f2\b0 \cf0  {\field{\*\fldinst{HYPERLINK "https://dev.mysql.com/doc/refman/8.0/en/join.html"}}{\fldrslt 
+\f1\b \cf2 JOIN}} {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=orderdetails"}}{\fldrslt orderdetails}}\
+
+\f1\b \cf2 ON
+\f2\b0 \cf0   {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=products"}}{\fldrslt products}}.productCode= {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=orderdetails"}}{\fldrslt orderdetails}}.productCode\
+
+\f1\b \cf2 GROUP
+\f2\b0 \cf0  
+\f1\b \cf2 BY
+\f2\b0 \cf0  prod\
+
+\f1\b \cf2 ORDER
+\f2\b0 \cf0  
+\f1\b \cf2 BY
+\f2\b0 \cf0  total 
+\f1\b \cf2 DESC
+\f2\b0 \cf0 \
+
+\f1\b \cf2 LIMIT
+\f2\b0 \cf0  \cf5 10\cf0 \
+\uc0\u1047 \u1072 \u1076 \u1072 \u1095 \u1072  6\
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://dev.mysql.com/doc/refman/8.0/en/select.html"}}{\fldrslt 
+\f1\b \cf2 SELECT}} firstName,lastName,contactFirstName,contactLastName\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=customers"}}{\fldrslt customers}} 
+\f1\b \cf2 as
+\f2\b0 \cf0  t1\
+
+\f1\b \cf2 LEFT
+\f2\b0 \cf0  {\field{\*\fldinst{HYPERLINK "https://dev.mysql.com/doc/refman/8.0/en/join.html"}}{\fldrslt 
+\f1\b \cf2 JOIN}} {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=employees"}}{\fldrslt employees}} 
+\f1\b \cf2 as
+\f2\b0 \cf0  t2\
+
+\f1\b \cf2 ON
+\f2\b0 \cf0   t1.salesRepEmployeeNumber= t2.employeeNumber\
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://dev.mysql.com/doc/refman/8.0/en/union.html"}}{\fldrslt 
+\f1\b \cf2 UNION}}\
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://dev.mysql.com/doc/refman/8.0/en/select.html"}}{\fldrslt 
+\f1\b \cf2 SELECT}} firstName,lastName,contactFirstName,contactLastName\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=employees"}}{\fldrslt employees}} 
+\f1\b \cf2 as
+\f2\b0 \cf0  t3\
+
+\f1\b \cf2 RIGHT
+\f2\b0 \cf0  {\field{\*\fldinst{HYPERLINK "https://dev.mysql.com/doc/refman/8.0/en/join.html"}}{\fldrslt 
+\f1\b \cf2 JOIN}} {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=customers"}}{\fldrslt customers}} 
+\f1\b \cf2 as
+\f2\b0 \cf0  t4\
+
+\f1\b \cf2 ON
+\f2\b0 \cf0  t3.employeeNumber = t4.salesRepEmployeeNumber\
+\uc0\u1047 \u1072 \u1076 \u1072 \u1095 \u1072  7\
+\pard\pardeftab720\partightenfactor0
+{\field{\*\fldinst{HYPERLINK "https://dev.mysql.com/doc/refman/8.0/en/select.html"}}{\fldrslt 
+\f1\b \cf2 SELECT}} t1.firstName, t1.lastName, t1.jobTitle,\
+t2.LastName 
+\f1\b \cf2 as
+\f2\b0 \cf0  subFirstName, t2.firstName 
+\f1\b \cf2 as
+\f2\b0 \cf0  subLastName\
+\pard\pardeftab720\partightenfactor0
+
+\f1\b \cf2 FROM
+\f2\b0 \cf0  {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=employees"}}{\fldrslt \cf4 \ul \ulc4 employees}} 
+\f1\b \cf2 as
+\f2\b0 \cf0  t1\
+
+\f1\b \cf2 LEFT
+\f2\b0 \cf0  {\field{\*\fldinst{HYPERLINK "https://dev.mysql.com/doc/refman/8.0/en/join.html"}}{\fldrslt 
+\f1\b \cf2 JOIN}} {\field{\*\fldinst{HYPERLINK "https://dsintrodb.skillbox.ru/?server=db&username=student&db=classicmodels&table=employees"}}{\fldrslt employees}} 
+\f1\b \cf2 as
+\f2\b0 \cf0  t2\
+
+\f1\b \cf2 ON
+\f2\b0 \cf0  t1.employeeNumber= t2.reportsTo\
+\
+}
